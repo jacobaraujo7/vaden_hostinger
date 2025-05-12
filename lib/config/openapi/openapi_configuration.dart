@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:vaden/vaden.dart';
+import 'package:vaden/vaden.dart' hide Server;
 import 'package:vaden/vaden_openapi.dart';
 
 @Configuration()
@@ -15,13 +15,12 @@ class OpenApiConfiguration {
         description: 'Vaden Backend example',
       ),
       servers: [
+        Server(url: 'https://server.vadentest.com'),
         config.localServer,
       ],
       tags: config.tags,
       paths: config.paths,
-      components: Components(
-        schemas: config.schemas,
-      ),
+      components: Components(schemas: config.schemas),
     );
   }
 
@@ -37,4 +36,3 @@ class OpenApiConfiguration {
     );
   }
 }
-
